@@ -18,18 +18,27 @@ const server = http.createServer((req, res) => {
         return res.end(JSON.stringify({data:
             {numero_telefone: "67 99999 9999",
                 endereco: "Rua da Alegria, 99, Centro"}}));
-    }
+    } else{
+        res.statusCode = 404;
+        res.end('Rota não encontrada')
+     } 
 
     if (req.method == "GET" && req.url == "/produtos") {
         return res.end(JSON.stringify(produtos));
 
-    }
+    } else{
+        res.statusCode = 404;
+        res.end('Rota não encontrada')
+     } 
 
     if (req.method == "GET" && req.url == "/status") {
         return res.end(JSON.stringify({"status": "ok" }));
         
-    }
-
+     } else{
+        res.statusCode = 404;
+        res.end('Rota não encontrada')
+     } 
+    
 
     res.end(JSON.stringify({data: "Página Inicial"}))
 })
